@@ -717,6 +717,28 @@ h3{ font-size:clamp(1.05rem,2.2vw,1.25rem); }
     color:var(--gold);
     transform:translateY(-4px);
 }
+.partners-more{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:.6rem;
+    margin-top:1.5rem;
+    text-align:center;
+    font-size:.95rem;
+    font-weight:700;
+    color:rgba(255,255,255,.85);
+}
+.partners-more i{
+    flex:0 0 30px;
+    width:30px; height:30px;
+    display:grid; place-items:center;
+    background:rgba(245,166,35,.16);
+    border:1px solid rgba(245,166,35,.5);
+    color:var(--gold);
+    border-radius:50%;
+    font-size:.78rem;
+}
 
 /* ============================================================================
    12. GALLERY + LIGHTBOX
