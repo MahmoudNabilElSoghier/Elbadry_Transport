@@ -693,21 +693,29 @@ h3{ font-size:clamp(1.05rem,2.2vw,1.25rem); }
 }
 .partner-logo{
     display:grid; place-items:center;
-    min-height:86px;
-    padding:.8rem;
+    min-height:84px;
+    padding:.9rem .7rem;
     text-align:center;
-    font-size:.78rem;
-    font-weight:600;
-    color:rgba(255,255,255,.60);
-    background:rgba(255,255,255,.05);
-    border:1px dashed rgba(255,255,255,.25);
+    font-size:.88rem;
+    font-weight:800;
+    line-height:1.5;
+    color:rgba(255,255,255,.92);
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.14);
     border-radius:var(--radius);
-    transition:background var(--transition), border-color var(--transition), color var(--transition);
+    transition:background var(--transition), border-color var(--transition),
+               color var(--transition), transform var(--transition);
+}
+.partner-logo.is-latin{
+    font-family:var(--font-en);
+    font-weight:700;
+    letter-spacing:2px;
 }
 .partner-logo:hover{
-    background:rgba(245,166,35,.10);
-    border-color:rgba(245,166,35,.55);
+    background:rgba(245,166,35,.14);
+    border-color:var(--gold);
     color:var(--gold);
+    transform:translateY(-4px);
 }
 
 /* ============================================================================
@@ -1256,7 +1264,7 @@ h3{ font-size:clamp(1.05rem,2.2vw,1.25rem); }
     .features-grid{ grid-template-columns:repeat(2,1fr); }
     .testimonials-grid{ grid-template-columns:repeat(2,1fr); }
     .gallery-grid{ grid-template-columns:repeat(3,1fr); }
-    .partners-grid{ grid-template-columns:repeat(3,1fr); }
+    .partners-grid{ grid-template-columns:repeat(4,1fr); }
     .form-row{ grid-template-columns:1fr 1fr; }
     .footer-grid{ grid-template-columns:repeat(2,1fr); }
     .footer-bottom-inner{ flex-direction:row; justify-content:space-between; text-align:start; }
@@ -1273,7 +1281,7 @@ h3{ font-size:clamp(1.05rem,2.2vw,1.25rem); }
     .features-grid{ grid-template-columns:repeat(2,1fr); gap:1.3rem; }
     .contact-form-wrap,.contact-info{ padding:2rem 1.8rem; }
     .network-grid{ grid-template-columns:1fr 1fr; gap:2.6rem; }
-    .partners-grid{ grid-template-columns:repeat(6,1fr); }
+    .partners-grid{ grid-template-columns:repeat(4,1fr); gap:1rem; }
     .footer-grid{ grid-template-columns:repeat(2,1fr) 1fr; }
 }
 
