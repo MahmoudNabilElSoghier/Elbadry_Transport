@@ -532,7 +532,7 @@ h3{ font-size:clamp(1.05rem,2.2vw,1.25rem); }
 .stats{
     background:
         linear-gradient(rgba(11,31,58,.94), rgba(6,15,30,.97)),
-        url('images/pngtree-port-logistics-and-transport-industry-with-container-ship-air-freight-trucks-image_17184406.jpg') center/cover fixed;
+        url('images/port-shipping-sunset.jpg') center/cover fixed;
     padding:56px 0;
     border-block:4px solid var(--gold);
 }
