@@ -168,7 +168,7 @@
     /* ========================================================================
        6. BACK-TO-TOP BUTTON
        ===================================================================== */
-    var backToTop = $('#backToTop');
+    var backToTop = $('#back-to-top');
     if (backToTop) {
         onScroll(function () {
             backToTop.classList.toggle('show', window.scrollY > 450);
@@ -304,8 +304,8 @@
     /* ========================================================================
        9. QUOTE FORM — validation + submission
        ===================================================================== */
-    var form        = $('#contactForm');
-    var formMessage = $('#formMessage');
+    var form        = $('#contact-form');
+    var formMessage = $('#form-message');
 
     /* Egyptian mobile numbers: 010 / 011 / 012 / 015 + 8 digits */
     var PHONE_REGEX = /^01[0125]\d{8}$/;
