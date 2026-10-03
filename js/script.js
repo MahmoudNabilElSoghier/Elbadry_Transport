@@ -12,11 +12,15 @@
    7.  Animated stat counters
    8.  Gallery lightbox (prev / next / keyboard)
    9.  Quote form validation + submission (Formspree / Web3Forms ready)
-   10. "Coming soon" social link guard
-   ========================================================================== */
+    10. "Coming soon" social link guard
+    11. Year auto-update + 12. Offline map fallback
+    ========================================================================== */
 
 (function () {
     'use strict';
+
+    /* i18n helper (js/lang.js loads first; fallback = return key) */
+    var t = (typeof window.t === 'function') ? window.t : function (k) { return k; };
 
     /* Debounced scroll handler helper ------------------------------------ */
     var ticking = false;
@@ -262,15 +266,22 @@
         if (lastFocused) lastFocused.focus();
     }
 
+    function refreshGalleryAria() {
+        galleryItems.forEach(function (item) {
+            var cap = item.querySelector('figcaption');
+            item.setAttribute('aria-label', t('js_gallery_zoom') + ((cap && cap.textContent) || ''));
+        });
+    }
     galleryItems.forEach(function (item, i) {
         item.setAttribute('tabindex', '0');
         item.setAttribute('role', 'button');
-        item.setAttribute('aria-label', 'تكبير الصورة: ' + (item.querySelector('figcaption') || {}).textContent);
         item.addEventListener('click', function () { openLightbox(i); });
         item.addEventListener('keydown', function (e) {
             if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(i); }
         });
     });
+    refreshGalleryAria();
+    document.addEventListener('langchange', refreshGalleryAria);
 
     if (lightbox) {
         $('.lightbox-close', lightbox).addEventListener('click', closeLightbox);
@@ -320,25 +331,25 @@
 
         switch (field.id) {
             case 'name':
-                if (!value) return setError(field, 'من فضلك أدخل الاسم بالكامل');
-                if (value.length < 3) return setError(field, 'الاسم قصير جداً — 3 أحرف على الأقل');
+                if (!value) return setError(field, t('js_val_name_required'));
+                if (value.length < 3) return setError(field, t('js_val_name_short'));
                 if (!/^[\u0600-\u06FFa-zA-Z\s'’\-\.]{3,}$/.test(value)) {
-                    return setError(field, 'الاسم يجب أن يحتوي على حروف فقط');
+                    return setError(field, t('js_val_name_letters'));
                 }
                 return setError(field, '');
 
             case 'phone': {
                 var phone = normalizePhone(value);
-                if (!phone) return setError(field, 'من فضلك أدخل رقم الهاتف');
+                if (!phone) return setError(field, t('js_val_phone_required'));
                 if (!PHONE_REGEX.test(phone)) {
-                    return setError(field, 'رقم غير صحيح — أدخل رقم مصري مكون من 11 رقماً يبدأ بـ 01');
+                    return setError(field, t('js_val_phone_invalid'));
                 }
                 field.value = phone;
                 return setError(field, '');
             }
 
             case 'service':
-                if (!value) return setError(field, 'من فضلك اختر نوع الخدمة');
+                if (!value) return setError(field, t('js_val_service_required'));
                 return setError(field, '');
 
             default:
@@ -372,7 +383,7 @@
             if (results.indexOf(false) !== -1) {
                 var firstInvalid = form.querySelector('.invalid');
                 if (firstInvalid) firstInvalid.focus();
-                formMessage.textContent = 'من فضلك راجع الحقول المطلوبة بالأحمر.';
+                formMessage.textContent = t('js_form_fix_errors');
                 formMessage.className = 'form-message error';
                 return;
             }
@@ -383,7 +394,7 @@
 
             /* --- Loading state --- */
             submitBtn.disabled = true;
-            if (label) label.textContent = 'جارٍ الإرسال...';
+            if (label) label.textContent = t('js_form_sending');
             if (spinner) spinner.hidden = false;
 
             var action = form.getAttribute('action') || '';
@@ -406,18 +417,36 @@
 
             function resetBtn() {
                 submitBtn.disabled = false;
-                if (label) label.textContent = 'أرسل الطلب';
+                if (label) label.textContent = t('js_form_send');
                 if (spinner) spinner.hidden = true;
             }
 
-            /* --- DEMO MODE: no backend endpoint configured yet -------------
-               Replace `action` in index.html with your Formspree / Web3Forms
-               URL and this block will automatically POST for real.        */
+            /* --- NO-BACKEND MODE: no endpoint configured yet ----------------
+               A fake "success" here would lose real customer leads, so the
+               validated quote is handed to WhatsApp instead (same number as
+               the site's wa.me links). Paste a Formspree / Web3Forms URL into
+               the form's `action` and the real POST below takes over.     */
             if (isPlaceholder) {
-                setTimeout(function () {
-                    success('✅ تم استلام طلبك بنجاح! سيتواصل معك فريقنا خلال ساعات العمل. للتواصل الفوري: 01097304445');
-                    resetBtn();
-                }, 900);
+                var waNumber = '201097304445';
+                var svcOpt = service.options[service.selectedIndex];
+                var svcKey = svcOpt ? svcOpt.getAttribute('data-i18n') : null;
+                var svcName = svcKey ? t(svcKey) : service.value;
+                var lines = [
+                    t('js_wa_title'),
+                    '———————————',
+                    t('js_wa_name') + name.value.trim(),
+                    t('js_wa_phone') + phone.value.trim(),
+                    t('js_wa_city') + (document.getElementById('city').value.trim() || '—'),
+                    t('js_wa_service') + svcName,
+                    t('js_wa_details') + (document.getElementById('details').value.trim() || '—')
+                ];
+                window.open(
+                    'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(lines.join('\n')),
+                    '_blank', 'noopener'
+                );
+                formMessage.textContent = t('js_wa_ready');
+                formMessage.className = 'form-message success';
+                resetBtn();
                 return;
             }
 
@@ -429,14 +458,14 @@
             })
                 .then(function (res) {
                     if (res.ok) {
-                        success('✅ تم إرسال طلبك بنجاح! سيتواصل معك فريقنا قريباً.');
+                        success(t('js_form_sent'));
                         form.reset();
                     } else {
-                        fail('تعذّر إرسال الطلب — من فضلك حاول مرة أخرى أو اتصل: 01097304445');
+                        fail(t('js_form_fail'));
                     }
                 })
                 .catch(function () {
-                    fail('تعذّر الاتصال بالخادم — يرجى المحاولة مجدداً أو الاتصال: 01097304445');
+                    fail(t('js_form_offline'));
                 })
                 .finally(resetBtn);
         });
@@ -450,7 +479,9 @@
     $$('a[data-todo="create-page"]').forEach(function (link) {
         link.addEventListener('click', function (e) {
             e.preventDefault();
-            showToast('قريباً — صفحة ' + (link.getAttribute('aria-label') || 'التواصل الاجتماعي').replace(' (قريباً)', '') + ' قيد الإنشاء');
+            var raw = link.getAttribute('aria-label') || t('js_social_soon_b');
+            var clean = raw.replace(/ \(قريباً\)| \(soon\)/i, '').replace(/^(صفحة|page)\s+/i, '');
+            showToast(t('js_social_soon') + clean + t('js_social_todo'));
         });
     });
 
@@ -495,5 +526,52 @@
        ===================================================================== */
     var yearEl = document.querySelector('[data-year]');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    /* ========================================================================
+       12. OFFLINE MAP FALLBACK — static branded map when Google can't load
+       ===================================================================== */
+    var mapWrap = $('.map-wrap');
+    var mapFrame = mapWrap ? mapWrap.querySelector('iframe') : null;
+    var mapFallback = mapWrap ? mapWrap.querySelector('.map-fallback') : null;
+    var mapLiveSrc = mapFrame ? mapFrame.getAttribute('src') : null;
+
+    function setMapMode(online) {
+        if (!mapWrap || !mapFrame || !mapFallback) return;
+        if (online) {
+            /* Restore the live map (in case a previous check hid it) */
+            if (!mapFrame.getAttribute('src') && mapLiveSrc) mapFrame.setAttribute('src', mapLiveSrc);
+            mapFrame.hidden = false;
+            mapFallback.hidden = true;
+        } else {
+            /* Stop the doomed request, show the branded fallback + live link */
+            mapFrame.removeAttribute('src');
+            mapFrame.hidden = true;
+            mapFallback.hidden = false;
+        }
+    }
+
+    function checkMapConnectivity() {
+        if (!navigator.onLine) { setMapMode(false); return; }
+        /* navigator.onLine lies behind captive portals — probe Google fast */
+        var ctrl = ('AbortController' in window) ? new AbortController() : null;
+        var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 6000);
+        fetch('https://maps.google.com/favicon.ico', {
+            mode: 'no-cors',
+            cache: 'no-store',
+            signal: ctrl ? ctrl.signal : undefined
+        }).then(function () {
+            clearTimeout(timer);
+            setMapMode(true);
+        }).catch(function () {
+            clearTimeout(timer);
+            setMapMode(false);
+        });
+    }
+
+    if (mapWrap) {
+        checkMapConnectivity();
+        window.addEventListener('online', checkMapConnectivity);
+        window.addEventListener('offline', function () { setMapMode(false); });
+    }
 
 })();

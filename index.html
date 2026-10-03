@@ -29,12 +29,10 @@
     <meta name="twitter:image" content="https://elbadrytransport.com/images/hero-truck-fleet.jpg">
     <meta name="twitter:url" content="https://elbadrytransport.com">
 
-    <!-- ===== Fonts & Icons & Animations ===== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <!-- ===== Fonts & Icons & Animations (all local, works offline) ===== -->
+    <link rel="stylesheet" href="./css/fonts.css">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/aos.css">
 
     <!-- ===== Critical CSS (inlined for first paint) ===== -->
     <style>
@@ -47,7 +45,7 @@
         img{max-width:100%;display:block}
     </style>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
 
     <!-- Content must stay visible if JavaScript / the AOS CDN is unavailable -->
     <noscript><style>[data-aos]{opacity:1 !important;transform:none !important}</style></noscript>
@@ -113,20 +111,20 @@
 <body>
 
     <!-- Accessibility: skip to main content -->
-    <a class="skip-link" href="#main">تخطَّ إلى المحتوى الرئيسي</a>
+    <a class="skip-link" href="#main" data-i18n="skip_link">تخطَّ إلى المحتوى الرئيسي</a>
 
     <!-- ============================================================
          Floating WhatsApp Button (bottom-left)
     ============================================================ -->
-    <a href="https://wa.me/201097304445" class="whatsapp-float" target="_blank" rel="noopener" aria-label="تواصل معنا عبر واتساب">
+    <a href="https://wa.me/201097304445" class="whatsapp-float" target="_blank" rel="noopener" data-i18n-aria="wa_float" aria-label="تواصل معنا عبر واتساب">
         <i class="fab fa-whatsapp" aria-hidden="true"></i>
-        <span class="whatsapp-tip">تواصل عبر واتساب</span>
+        <span class="whatsapp-tip" data-i18n="wa_tip">تواصل عبر واتساب</span>
     </a>
 
     <!-- ============================================================
          Back to Top Button
     ============================================================ -->
-    <button id="backToTop" class="back-to-top" type="button" aria-label="العودة إلى أعلى الصفحة">
+    <button id="backToTop" class="back-to-top" type="button" data-i18n-aria="top_btn" aria-label="العودة إلى أعلى الصفحة">
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
@@ -137,23 +135,29 @@
         <div class="container header-container">
 
             <!-- Logo -->
-            <a href="#home" class="logo" aria-label="شركة البدري لنقل — الصفحة الرئيسية">
+            <a href="#home" class="logo" data-i18n-aria="logo_home" aria-label="شركة البدري لنقل — الصفحة الرئيسية">
                 <span class="logo-mark" aria-hidden="true"><i class="fas fa-shipping-fast"></i></span>
                 <span class="logo-text">
-                    <strong>شركة البدري لنقل</strong>
-                    <small dir="ltr">El Badry Transport</small>
+                    <strong data-i18n="brand_name">شركة البدري لنقل</strong>
+                    <small dir="ltr" data-i18n="brand_sub">El Badry Transport</small>
                 </span>
             </a>
 
+            <!-- Language toggle -->
+            <button class="lang-toggle" id="lang-toggle" type="button" aria-label="English">
+                <i class="fas fa-globe" aria-hidden="true"></i>
+                <span id="lang-label">EN</span>
+            </button>
+
             <!-- Navigation -->
-            <nav id="navbar" aria-label="القائمة الرئيسية">
+            <nav id="navbar" data-i18n-aria="nav_main" aria-label="القائمة الرئيسية">
                 <ul>
-                    <li><a href="#home">الرئيسية</a></li>
-                    <li><a href="#services">خدماتنا</a></li>
-                    <li><a href="#why-us">لماذا نحن</a></li>
-                    <li><a href="#how-it-works">كيف نعمل</a></li>
-                    <li><a href="#testimonials">آراء العملاء</a></li>
-                    <li><a href="#contact">تواصل معنا</a></li>
+                    <li><a href="#home" data-i18n="nav_home">الرئيسية</a></li>
+                    <li><a href="#services" data-i18n="nav_services">خدماتنا</a></li>
+                    <li><a href="#why-us" data-i18n="nav_why">لماذا نحن</a></li>
+                    <li><a href="#how-it-works" data-i18n="nav_how">كيف نعمل</a></li>
+                    <li><a href="#testimonials" data-i18n="nav_reviews">آراء العملاء</a></li>
+                    <li><a href="#contact" data-i18n="nav_contact">تواصل معنا</a></li>
                 </ul>
             </nav>
 
@@ -185,36 +189,36 @@
             <div class="hero-overlay" role="presentation"></div>
 
             <div class="container hero-content">
-                <span class="hero-eyebrow" data-aos="fade-down">شركة البدري لنقل — El Badry Transport</span>
+                <span class="hero-eyebrow" data-aos="fade-down" data-i18n="hero_eyebrow">شركة البدري لنقل — El Badry Transport</span>
 
-                <h1 data-aos="fade-up">شركة البدري لنقل — شريكك الموثوق في النقل والشحن</h1>
+                <h1 data-aos="fade-up" data-i18n="hero_title">شركة البدري لنقل — شريكك الموثوق في النقل والشحن</h1>
 
-                <p class="hero-sub" data-aos="fade-up" data-aos-delay="120">
+                <p class="hero-sub" data-aos="fade-up" data-aos-delay="120" data-i18n="hero_sub">
                     أكثر من 15 عاماً من الخبرة في النقل والشحن — نقل داخل وخارج الجمهورية، شحن بحري وجوي،
                     ونتعامل مع أكبر التوكيلات الملاحية والوكلاء على مستوى العالم.
                 </p>
 
                 <div class="hero-btns" data-aos="fade-up" data-aos-delay="220">
-                    <a href="#quote" class="btn btn-gold btn-lg">اطلب عرض سعر مجاني</a>
+                    <a href="#quote" class="btn btn-gold btn-lg" data-i18n="hero_cta_quote">اطلب عرض سعر مجاني</a>
                     <a href="tel:+201097304445" class="btn btn-outline-light btn-lg">
-                        <i class="fas fa-phone" aria-hidden="true"></i> اتصل بنا الآن
+                        <i class="fas fa-phone" aria-hidden="true"></i> <span data-i18n="hero_cta_call">اتصل بنا الآن</span>
                     </a>
                     <a href="https://wa.me/201097304445" class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener">
-                        <i class="fab fa-whatsapp" aria-hidden="true"></i> واتساب
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i> <span data-i18n="hero_cta_wa">واتساب</span>
                     </a>
                 </div>
 
                 <ul class="trust-badges" data-aos="fade-up" data-aos-delay="320">
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> خبرة أكثر من 15 سنة</li>
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> سمعة قوية وموثوقة</li>
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> شراكات مع أكبر التوكيلات الملاحية</li>
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> وكلاء معتمدون عالمياً</li>
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> تأمين شامل على الشحنات</li>
-                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> خدمة على مدار الساعة 24/24</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="trust_1">خبرة أكثر من 15 سنة</span></li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="trust_2">سمعة قوية وموثوقة</span></li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="trust_3">شراكات مع أكبر التوكيلات الملاحية</span></li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="trust_4">وكلاء معتمدون عالمياً</span></li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="trust_5">تأمين شامل على الشحنات</span></li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="trust_6">خدمة على مدار الساعة 24/24</span></li>
                 </ul>
             </div>
 
-            <a href="#services" class="hero-scroll" aria-label="انتقل إلى قسم خدماتنا">
+            <a href="#services" class="hero-scroll" data-i18n-aria="hero_scroll" aria-label="انتقل إلى قسم خدماتنا">
                 <i class="fas fa-chevron-down" aria-hidden="true"></i>
             </a>
         </section>
@@ -225,66 +229,66 @@
         <section id="services" class="section">
             <div class="container">
                 <header class="section-head" data-aos="fade-up">
-                    <span class="section-tag">خدماتنا</span>
-                    <h2>خدمات متكاملة للنقل والشحن</h2>
-                    <p>من نقل الأثاث المنزلي إلى الشحن البحري والجوي الدولي — كل ما تحتاجه تحت سقف واحد، بخبرة تتجاوز 15 عاماً.</p>
+                    <span class="section-tag" data-i18n="sec_services_tag">خدماتنا</span>
+                    <h2 data-i18n="sec_services_title">خدمات متكاملة للنقل والشحن</h2>
+                    <p data-i18n="sec_services_sub">من نقل الأثاث المنزلي إلى الشحن البحري والجوي الدولي — كل ما تحتاجه تحت سقف واحد، بخبرة تتجاوز 15 عاماً.</p>
                 </header>
 
                 <div class="services-grid">
                     <article class="service-card" data-aos="fade-up" data-aos-delay="50">
                         <span class="service-icon"><i class="fas fa-house-chimney" aria-hidden="true"></i></span>
-                        <h3>نقل الأثاث المنزلي</h3>
-                        <p>فك وتركيب وتغليف احترافي لضمان سلامة منقولاتك من الباب إلى الباب، بفريق مدرب وأسطول مجهز بالكامل.</p>
-                        <a href="#quote" class="card-link">اطلب الخدمة <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                        <h3 data-i18n="svc_home_title">نقل الأثاث المنزلي</h3>
+                        <p data-i18n="svc_home_desc">فك وتركيب وتغليف احترافي لضمان سلامة منقولاتك من الباب إلى الباب، بفريق مدرب وأسطول مجهز بالكامل.</p>
+                        <a href="#quote" class="card-link"><span data-i18n="card_cta">اطلب الخدمة</span> <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
                     </article>
 
                     <article class="service-card" data-aos="fade-up" data-aos-delay="100">
                         <span class="service-icon"><i class="fas fa-building" aria-hidden="true"></i></span>
-                        <h3>نقل المكاتب والشركات</h3>
-                        <p>حلول متكاملة للمنشآت التجارية دون تعطيل أعمالك: تخطيط مسبق، نقل خارج أوقات الدوام، وتركيب في الموقع الجديد.</p>
-                        <a href="#quote" class="card-link">اطلب الخدمة <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                        <h3 data-i18n="svc_office_title">نقل المكاتب والشركات</h3>
+                        <p data-i18n="svc_office_desc">حلول متكاملة للمنشآت التجارية دون تعطيل أعمالك: تخطيط مسبق، نقل خارج أوقات الدوام، وتركيب في الموقع الجديد.</p>
+                        <a href="#quote" class="card-link"><span data-i18n="card_cta">اطلب الخدمة</span> <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
                     </article>
 
                     <article class="service-card" data-aos="fade-up" data-aos-delay="150">
                         <span class="service-icon"><i class="fas fa-truck-fast" aria-hidden="true"></i></span>
-                        <h3>نقل داخل وخارج الجمهورية</h3>
-                        <p>تغطية شاملة لجميع محافظات مصر — من القاهرة والجيزة إلى الإسكندرية وأسوان والبحر الأحمر، بأسطول حديث ومتابعة لحظية.</p>
-                        <a href="#quote" class="card-link">اطلب الخدمة <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                        <h3 data-i18n="svc_domestic_title">نقل داخل وخارج الجمهورية</h3>
+                        <p data-i18n="svc_domestic_desc">تغطية شاملة لجميع محافظات مصر — من القاهرة والجيزة إلى الإسكندرية وأسوان والبحر الأحمر، بأسطول حديث ومتابعة لحظية.</p>
+                        <a href="#quote" class="card-link"><span data-i18n="card_cta">اطلب الخدمة</span> <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
                     </article>
 
                     <article class="service-card" data-aos="fade-up" data-aos-delay="200">
                         <span class="service-icon"><i class="fas fa-ship" aria-hidden="true"></i></span>
-                        <h3>الشحن البحري</h3>
-                        <p>حاويات كاملة (FCL) وجزئية (LCL) بالتعاون مع كبرى التوكيلات الملاحية، مع متابعة المستندات والتخليص الجمركي.</p>
-                        <a href="#quote" class="card-link">اطلب الخدمة <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                        <h3 data-i18n="svc_sea_title">الشحن البحري</h3>
+                        <p data-i18n="svc_sea_desc">حاويات كاملة (FCL) وجزئية (LCL) بالتعاون مع كبرى التوكيلات الملاحية، مع متابعة المستندات والتخليص الجمركي.</p>
+                        <a href="#quote" class="card-link"><span data-i18n="card_cta">اطلب الخدمة</span> <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
                     </article>
 
                     <article class="service-card" data-aos="fade-up" data-aos-delay="250">
                         <span class="service-icon"><i class="fas fa-plane-departure" aria-hidden="true"></i></span>
-                        <h3>الشحن الجوي</h3>
-                        <p>خدمات شحن جوي سريع عبر وكلاء عالميين معتمدين، للشحنات الحساسة لزمن التسليم والمواد عالية القيمة.</p>
-                        <a href="#quote" class="card-link">اطلب الخدمة <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                        <h3 data-i18n="svc_air_title">الشحن الجوي</h3>
+                        <p data-i18n="svc_air_desc">خدمات شحن جوي سريع عبر وكلاء عالميين معتمدين، للشحنات الحساسة لزمن التسليم والمواد عالية القيمة.</p>
+                        <a href="#quote" class="card-link"><span data-i18n="card_cta">اطلب الخدمة</span> <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
                     </article>
 
                     <article class="service-card" data-aos="fade-up" data-aos-delay="300">
                         <span class="service-icon"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i></span>
-                        <h3>فك وتركيب الأثاث</h3>
-                        <p>فريق متخصص بأحدث الأدوات يفكك ويعيد تركيب أثاثك بأمان — غرف نوم، مطابخ، مكاتب، ومعدات خاصة.</p>
-                        <a href="#quote" class="card-link">اطلب الخدمة <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                        <h3 data-i18n="svc_furniture_title">فك وتركيب الأثاث</h3>
+                        <p data-i18n="svc_furniture_desc">فريق متخصص بأحدث الأدوات يفكك ويعيد تركيب أثاثك بأمان — غرف نوم، مطابخ، مكاتب، ومعدات خاصة.</p>
+                        <a href="#quote" class="card-link"><span data-i18n="card_cta">اطلب الخدمة</span> <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
                     </article>
 
                     <article class="service-card" data-aos="fade-up" data-aos-delay="350">
                         <span class="service-icon"><i class="fas fa-box-open" aria-hidden="true"></i></span>
-                        <h3>التغليف الاحترافي</h3>
-                        <p>مواد تغليف عالية الجودة — كرتون مقوى، فقاعات، وأغطية مبطنة — تحمي منقولاتك من الصدم والرطوبة.</p>
-                        <a href="#quote" class="card-link">اطلب الخدمة <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                        <h3 data-i18n="svc_packing_title">التغليف الاحترافي</h3>
+                        <p data-i18n="svc_packing_desc">مواد تغليف عالية الجودة — كرتون مقوى، فقاعات، وأغطية مبطنة — تحمي منقولاتك من الصدم والرطوبة.</p>
+                        <a href="#quote" class="card-link"><span data-i18n="card_cta">اطلب الخدمة</span> <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
                     </article>
 
                     <article class="service-card" data-aos="fade-up" data-aos-delay="400">
                         <span class="service-icon"><i class="fas fa-warehouse" aria-hidden="true"></i></span>
-                        <h3>تخزين آمن (Storage)</h3>
-                        <p>مستودعات مؤمّنة على مدار الساعة ونظام تتبع يتيح لك معرفة موقع شحنتك في أي لحظة.</p>
-                        <a href="#quote" class="card-link">اطلب الخدمة <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                        <h3 data-i18n="svc_storage_title">تخزين آمن (Storage)</h3>
+                        <p data-i18n="svc_storage_desc">مستودعات مؤمّنة على مدار الساعة ونظام تتبع يتيح لك معرفة موقع شحنتك في أي لحظة.</p>
+                        <a href="#quote" class="card-link"><span data-i18n="card_cta">اطلب الخدمة</span> <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
                     </article>
                 </div>
             </div>
@@ -296,57 +300,57 @@
         <section id="why-us" class="section section-alt">
             <div class="container">
                 <header class="section-head" data-aos="fade-up">
-                    <span class="section-tag">لماذا البدري؟</span>
-                    <h2>لماذا يثق بنا آلاف العملاء؟</h2>
-                    <p>لا نبيع وعوداً — نبني سمعة منذ أكثر من 15 عاماً، شحنة بعد شحنة.</p>
+                    <span class="section-tag" data-i18n="why_tag">لماذا البدري؟</span>
+                    <h2 data-i18n="why_title">لماذا يثق بنا آلاف العملاء؟</h2>
+                    <p data-i18n="why_sub">لا نبيع وعوداً — نبني سمعة منذ أكثر من 15 عاماً، شحنة بعد شحنة.</p>
                 </header>
 
                 <div class="features-grid">
                     <article class="feature-item" data-aos="fade-up" data-aos-delay="50">
                         <span class="feature-icon"><i class="fas fa-award" aria-hidden="true"></i></span>
                         <div>
-                            <h3>خبرة أكثر من 15 سنة</h3>
-                            <p>خبرة أكثر من 15 سنة في مجال النقل والشحن المحلي والدولي. رأينا تطور السوق كله، وعلمنا كيف نتعامل مع كل نوع من الشحنات بأمانة واحترافية.</p>
+                            <h3 data-i18n="trust_1">خبرة أكثر من 15 سنة</h3>
+                            <p data-i18n="why_1_desc">خبرة أكثر من 15 سنة في مجال النقل والشحن المحلي والدولي. رأينا تطور السوق كله، وعلمنا كيف نتعامل مع كل نوع من الشحنات بأمانة واحترافية.</p>
                         </div>
                     </article>
 
                     <article class="feature-item" data-aos="fade-up" data-aos-delay="100">
                         <span class="feature-icon"><i class="fas fa-star" aria-hidden="true"></i></span>
                         <div>
-                            <h3>سمعة جبارة وقوية</h3>
-                            <p>سمعة جبارة وقوية بُنيت على آلاف العملاء الراضين وثقتهم عبر السنين — نصائح عائلات وشركات ومنشآت تعود إلينا كل مرة، وتوصي بنا لغيرها.</p>
+                            <h3 data-i18n="why_2_title">سمعة جبارة وقوية</h3>
+                            <p data-i18n="why_2_desc">سمعة جبارة وقوية بُنيت على آلاف العملاء الراضين وثقتهم عبر السنين — نصائح عائلات وشركات ومنشآت تعود إلينا كل مرة، وتوصي بنا لغيرها.</p>
                         </div>
                     </article>
 
                     <article class="feature-item" data-aos="fade-up" data-aos-delay="150">
                         <span class="feature-icon"><i class="fas fa-map-location-dot" aria-hidden="true"></i></span>
                         <div>
-                            <h3>نقل في جميع أنحاء الجمهورية</h3>
-                            <p>نقل في جميع أنحاء الجمهورية — تغطية كاملة لكل المحافظات، من القاهرة والجيزة إلى الإسكندرية وأسوان والبحر الأحمر، ووصولاً إلى أبعد النقاط.</p>
+                            <h3 data-i18n="why_3_title">نقل في جميع أنحاء الجمهورية</h3>
+                            <p data-i18n="why_3_desc">نقل في جميع أنحاء الجمهورية — تغطية كاملة لكل المحافظات، من القاهرة والجيزة إلى الإسكندرية وأسوان والبحر الأحمر، ووصولاً إلى أبعد النقاط.</p>
                         </div>
                     </article>
 
                     <article class="feature-item" data-aos="fade-up" data-aos-delay="200">
                         <span class="feature-icon"><i class="fas fa-anchor" aria-hidden="true"></i></span>
                         <div>
-                            <h3>تعامل مع أكبر التوكيلات الملاحية</h3>
-                            <p>تعامل مع أكبر التوكيلات الملاحية — شراكات رسمية مع كبرى شركات الملاحة والنقل البحري، تضمن لك أسعاراً تنافسية ومواعيد إبحار مؤكدة.</p>
+                            <h3 data-i18n="why_4_title">تعامل مع أكبر التوكيلات الملاحية</h3>
+                            <p data-i18n="why_4_desc">تعامل مع أكبر التوكيلات الملاحية — شراكات رسمية مع كبرى شركات الملاحة والنقل البحري، تضمن لك أسعاراً تنافسية ومواعيد إبحار مؤكدة.</p>
                         </div>
                     </article>
 
                     <article class="feature-item" data-aos="fade-up" data-aos-delay="250">
                         <span class="feature-icon"><i class="fas fa-earth-africa" aria-hidden="true"></i></span>
                         <div>
-                            <h3>وكلاء معتمدون على مستوى العالم</h3>
-                            <p>وكلاء معتمدون على مستوى العالم — شبكة عالمية تضمن وصول شحنتك لأي مكان بأمان، متابعة من باب إلى باب في القارات الأربع.</p>
+                            <h3 data-i18n="why_5_title">وكلاء معتمدون على مستوى العالم</h3>
+                            <p data-i18n="why_5_desc">وكلاء معتمدون على مستوى العالم — شبكة عالمية تضمن وصول شحنتك لأي مكان بأمان، متابعة من باب إلى باب في القارات الأربع.</p>
                         </div>
                     </article>
 
                     <article class="feature-item" data-aos="fade-up" data-aos-delay="300">
                         <span class="feature-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></span>
                         <div>
-                            <h3>تأمين شامل + التزام بالمواعيد + خدمة 24/7</h3>
-                            <p>تأمين شامل على الشحنات، التزام صارم بالمواعيد المتفق عليها، وخدمة عملاء على مدار 24 ساعة طوال أيام الأسبوع لراحة بالك التامة.</p>
+                            <h3 data-i18n="why_6_title">تأمين شامل + التزام بالمواعيد + خدمة 24/7</h3>
+                            <p data-i18n="why_6_desc">تأمين شامل على الشحنات، التزام صارم بالمواعيد المتفق عليها، وخدمة عملاء على مدار 24 ساعة طوال أيام الأسبوع لراحة بالك التامة.</p>
                         </div>
                     </article>
                 </div>
@@ -356,27 +360,27 @@
         <!-- ============================================================
              5. Stats Counter (أرقام تتحدث عنا)
         ============================================================ -->
-        <section class="stats" aria-label="أرقام تتحدث عنا">
+        <section class="stats" aria-label="أرقام تتحدث عنا" data-i18n-aria="stats_aria">
             <div class="container stats-grid">
                 <div class="stat-item" data-aos="zoom-in">
                     <span class="stat-icon"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span>
                     <p class="stat-number"><span class="counter" data-target="15" data-prefix="+">0</span></p>
-                    <p class="stat-label">سنة خبرة</p>
+                    <p class="stat-label" data-i18n="stats_1">سنة خبرة</p>
                 </div>
                 <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
                     <span class="stat-icon"><i class="fas fa-face-smile" aria-hidden="true"></i></span>
                     <p class="stat-number"><span class="counter" data-target="5000" data-prefix="+">0</span></p>
-                    <p class="stat-label">عميل سعيد</p>
+                    <p class="stat-label" data-i18n="stats_2">عميل سعيد</p>
                 </div>
                 <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
                     <span class="stat-icon"><i class="fas fa-handshake" aria-hidden="true"></i></span>
                     <p class="stat-number"><span class="counter" data-target="50" data-prefix="+">0</span></p>
-                    <p class="stat-label">توكيل ملاحي ووكيل عالمي</p>
+                    <p class="stat-label" data-i18n="stats_3">توكيل ملاحي ووكيل عالمي</p>
                 </div>
                 <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
                     <span class="stat-icon"><i class="fas fa-map" aria-hidden="true"></i></span>
                     <p class="stat-number"><span class="counter" data-target="27">0</span></p>
-                    <p class="stat-label">محافظة — تغطية داخل الجمهورية</p>
+                    <p class="stat-label" data-i18n="stats_4">محافظة — تغطية داخل الجمهورية</p>
                 </div>
             </div>
         </section>
@@ -387,37 +391,36 @@
         <section id="how-it-works" class="section">
             <div class="container">
                 <header class="section-head" data-aos="fade-up">
-                    <span class="section-tag">كيف نعمل</span>
-                    <h2>أربع خطوات تفصل شحنتك عن وجهتها</h2>
-                    <p>عملية واضحة وشفافة من أول اتصال حتى استلام الشحنة في الوجهة.</p>
+                    <span class="section-tag" data-i18n="nav_how">كيف نعمل</span>
+                    <h2 data-i18n="steps_title">أربع خطوات تفصل شحنتك عن وجهتها</h2>
+                    <p data-i18n="steps_sub">عملية واضحة وشفافة من أول اتصال حتى استلام الشحنة في الوجهة.</p>
                 </header>
 
                 <ol class="steps">
                     <li class="step-item" data-aos="fade-up" data-aos-delay="50">
                         <span class="step-num">1</span>
                         <span class="step-icon"><i class="fas fa-phone-volume" aria-hidden="true"></i></span>
-                        <h3>تواصل معنا</h3>
-                        <p>عبر الهاتف أو واتساب:
-                            <a href="tel:+201097304445" dir="ltr">+201097304445</a> —
-                            نرد عليك فوراً ونجيب على كل استفساراتك.</p>
+                        <h3 data-i18n="nav_contact">تواصل معنا</h3>
+                        <p><span data-i18n="steps_1_a">عبر الهاتف أو واتساب:</span>
+                            <a href="tel:+201097304445" dir="ltr">+201097304445</a> <span data-i18n="steps_1_b">— نرد عليك فوراً ونجيب على كل استفساراتك.</span></p>
                     </li>
                     <li class="step-item" data-aos="fade-up" data-aos-delay="150">
                         <span class="step-num">2</span>
                         <span class="step-icon"><i class="fas fa-clipboard-check" aria-hidden="true"></i></span>
-                        <h3>معاينة وتقييم مجاني</h3>
-                        <p>عرض سعر شفاف ومفصل بدون أي رسوم مخفية، حسب حجم الشحنة والمسافة والخدمة المطلوبة.</p>
+                        <h3 data-i18n="steps_2_title">معاينة وتقييم مجاني</h3>
+                        <p data-i18n="steps_2_desc">عرض سعر شفاف ومفصل بدون أي رسوم مخفية، حسب حجم الشحنة والمسافة والخدمة المطلوبة.</p>
                     </li>
                     <li class="step-item" data-aos="fade-up" data-aos-delay="250">
                         <span class="step-num">3</span>
                         <span class="step-icon"><i class="fas fa-boxes-packing" aria-hidden="true"></i></span>
-                        <h3>التغليف والشحن</h3>
-                        <p>بأحدث المعدات وأعلى المعايير العالمية — تغليف احترافي، تحميل آمن، ومتابعة مستمرة للشحنة.</p>
+                        <h3 data-i18n="steps_3_title">التغليف والشحن</h3>
+                        <p data-i18n="steps_3_desc">بأحدث المعدات وأعلى المعايير العالمية — تغليف احترافي، تحميل آمن، ومتابعة مستمرة للشحنة.</p>
                     </li>
                     <li class="step-item" data-aos="fade-up" data-aos-delay="350">
                         <span class="step-num">4</span>
                         <span class="step-icon"><i class="fas fa-location-dot" aria-hidden="true"></i></span>
-                        <h3>التسليم والتتبع</h3>
-                        <p>تسليم آمن في الوجهة مع إمكانية تتبع الشحنة، وفك وتركيب عند الطلب حتى تستلم كل شيء جاهزاً.</p>
+                        <h3 data-i18n="steps_4_title">التسليم والتتبع</h3>
+                        <p data-i18n="steps_4_desc">تسليم آمن في الوجهة مع إمكانية تتبع الشحنة، وفك وتركيب عند الطلب حتى تستلم كل شيء جاهزاً.</p>
                     </li>
                 </ol>
             </div>
@@ -429,19 +432,19 @@
         <section id="network" class="section section-dark">
             <div class="container network-grid">
                 <div class="network-copy" data-aos="fade-up">
-                    <span class="section-tag section-tag-light">شبكتنا العالمية</span>
-                    <h2>شبكة تمتد عبر القارات الأربع</h2>
-                    <p>
+                    <span class="section-tag section-tag-light" data-i18n="network_tag">شبكتنا العالمية</span>
+                    <h2 data-i18n="network_title">شبكة تمتد عبر القارات الأربع</h2>
+                    <p data-i18n="network_desc">
                         نتعامل مع أكبر التوكيلات الملاحية والوكلاء على مستوى العالم — شبكتنا تمتد عبر قارات
                         آسيا وأوروبا وأفريقيا وأمريكا، لضمان وصول شحنتك إلى أي وجهة بأمان وفي موعدها.
                     </p>
                     <ul class="network-points">
-                        <li><i class="fas fa-check" aria-hidden="true"></i> شحن بحري بحاويات FCL و LCL</li>
-                        <li><i class="fas fa-check" aria-hidden="true"></i> شحن جوي سريع عبر وكلاء معتمدين</li>
-                        <li><i class="fas fa-check" aria-hidden="true"></i> تخليص جمركي ومتابعة مستندات كاملة</li>
-                        <li><i class="fas fa-check" aria-hidden="true"></i> تأمين دولي على الشحنات</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> <span data-i18n="network_1">شحن بحري بحاويات FCL و LCL</span></li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> <span data-i18n="network_2">شحن جوي سريع عبر وكلاء معتمدين</span></li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> <span data-i18n="network_3">تخليص جمركي ومتابعة مستندات كاملة</span></li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> <span data-i18n="network_4">تأمين دولي على الشحنات</span></li>
                     </ul>
-                    <a href="#quote" class="btn btn-gold">اطلب عرض سعر للشحن الدولي</a>
+                    <a href="#quote" class="btn btn-gold" data-i18n="network_cta">اطلب عرض سعر للشحن الدولي</a>
                 </div>
 
                 <div class="network-visual" data-aos="fade-left">
@@ -453,20 +456,20 @@
 
             <!-- Partner / agent names — swap each <span> for <img> when real logos arrive -->
             <div class="container partners">
-                <p class="partners-title" data-aos="fade-up">شركاؤنا ووكلاؤنا</p>
+                <p class="partners-title" data-aos="fade-up" data-i18n="network_partners_title">شركاؤنا ووكلاؤنا</p>
                 <ul class="partners-grid" data-aos="fade-up" data-aos-delay="100">
-                    <li class="partner-logo">خط ملاحى الميرسك</li>
+                    <li class="partner-logo" data-i18n="network_p1">خط ملاحى الميرسك</li>
                     <li class="partner-logo is-latin" dir="ltr">ZIM</li>
                     <li class="partner-logo is-latin" dir="ltr">DHL</li>
-                    <li class="partner-logo">سيراميكا كليوباترا</li>
-                    <li class="partner-logo">دالتكس</li>
-                    <li class="partner-logo">أجرين للحاصلات الزراعية</li>
-                    <li class="partner-logo">محطة سوناك</li>
-                    <li class="partner-logo">محطة نهضة مصر</li>
+                    <li class="partner-logo" data-i18n="network_p2">سيراميكا كليوباترا</li>
+                    <li class="partner-logo" data-i18n="network_p3">دالتكس</li>
+                    <li class="partner-logo" data-i18n="network_p4">أجرين للحاصلات الزراعية</li>
+                    <li class="partner-logo" data-i18n="network_p5">محطة سوناك</li>
+                    <li class="partner-logo" data-i18n="network_p6">محطة نهضة مصر</li>
                 </ul>
                 <p class="partners-more" data-aos="fade-up" data-aos-delay="180">
                     <i class="fas fa-plus" aria-hidden="true"></i>
-                    والمزيد الكثير من الوكلاء والشركاء المعتمدين حول العالم
+                    <span data-i18n="network_more">والمزيد الكثير من الوكلاء والشركاء المعتمدين حول العالم</span>
                 </p>
             </div>
         </section>
@@ -477,55 +480,55 @@
         <section id="gallery" class="section">
             <div class="container">
                 <header class="section-head" data-aos="fade-up">
-                    <span class="section-tag">معرض أعمالنا</span>
-                    <h2>أسطولنا في العمل</h2>
-                    <p>من الميناء إلى باب منزلك — لحظات من يوم عملنا اليومي.</p>
+                    <span class="section-tag" data-i18n="gallery_tag">معرض أعمالنا</span>
+                    <h2 data-i18n="gallery_title">أسطولنا في العمل</h2>
+                    <p data-i18n="gallery_sub">من الميناء إلى باب منزلك — لحظات من يوم عملنا اليومي.</p>
                 </header>
 
                 <div class="gallery-grid" data-aos="fade-up">
                     <figure class="gallery-item">
                         <img src="images/port-shipping-sunset.jpg"
                              alt="ميناء الشحن عند الغروب — سفن الحاويات وشاحنات النقل" loading="lazy" width="466" height="260">
-                        <figcaption>الشحن البحري من الميناء</figcaption>
+                        <figcaption data-i18n="gallery_1">الشحن البحري من الميناء</figcaption>
                     </figure>
                     <figure class="gallery-item">
                         <img src="images/logistics-concept.webp"
                              alt="اللوجستيات متعددة الوسائط — شحن بحري وجوي وبري وسكة حديد" loading="lazy">
-                        <figcaption>نقل متعدد الوسائط</figcaption>
+                        <figcaption data-i18n="gallery_2">نقل متعدد الوسائط</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="images/truck-convoy-road.jpg"
+                        <img src="images/overland-transport.jpg"
                              alt="قافلة شاحنات نقل جاهزة للانطلاق على الطريق" loading="lazy" width="750" height="375">
-                        <figcaption>قافلة شاحنات جاهزة</figcaption>
+                        <figcaption data-i18n="gallery_3">قافلة شاحنات جاهزة</figcaption>
                     </figure>
                     <figure class="gallery-item">
                         <img src="images/trucks-white-lineup.webp"
                              alt="أسطول الشاحنات مركّز ومستعد للرحلات" loading="lazy">
-                        <figcaption>أسطولنا على أهواز العمل</figcaption>
+                        <figcaption data-i18n="gallery_4">أسطولنا على أهواز العمل</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="images/trucks-fleet-highway.jpg"
+                        <img src="images/trucks-fleet-highway.webp"
                              alt="شاحنات شركة البدري لنقل لنقل البضائع" loading="lazy" width="380" height="239">
-                        <figcaption>نقل البضائع بين المحافظات</figcaption>
+                        <figcaption data-i18n="gallery_5">نقل البضائع بين المحافظات</figcaption>
                     </figure>
                     <figure class="gallery-item">
                         <img src="images/trucks-road-journey.jpg"
                              alt="شاحنات النقل في رحلة طويلة" loading="lazy" width="600" height="400">
-                        <figcaption>رحلات نقل طويلة المدى</figcaption>
+                        <figcaption data-i18n="gallery_6">رحلات نقل طويلة المدى</figcaption>
                     </figure>
                 </div>
             </div>
 
             <!-- Lightbox -->
-            <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="عارض الصور">
-                <button class="lightbox-close" type="button" aria-label="إغلاق الصورة">
+            <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="عارض الصور" data-i18n-aria="misc_lightbox">
+                <button class="lightbox-close" type="button" aria-label="إغلاق الصورة" data-i18n-aria="misc_close">
                     <i class="fas fa-xmark" aria-hidden="true"></i>
                 </button>
-                <button class="lightbox-nav lightbox-prev" type="button" aria-label="الصورة السابقة">
+                <button class="lightbox-nav lightbox-prev" type="button" aria-label="الصورة السابقة" data-i18n-aria="misc_prev">
                     <i class="fas fa-chevron-right" aria-hidden="true"></i>
                 </button>
                 <img src="" alt="" id="lightbox-img">
-                <button class="lightbox-nav lightbox-next" type="button" aria-label="الصورة التالية">
+                <button class="lightbox-nav lightbox-next" type="button" aria-label="الصورة التالية" data-i18n-aria="misc_next">
                     <i class="fas fa-chevron-left" aria-hidden="true"></i>
                 </button>
                 <p class="lightbox-caption" id="lightbox-caption"></p>
@@ -538,75 +541,75 @@
         <section id="testimonials" class="section section-alt">
             <div class="container">
                 <header class="section-head" data-aos="fade-up">
-                    <span class="section-tag">آراء عملائنا</span>
-                    <h2>كلام الناس أهم من كلامنا</h2>
-                    <p>آراء حقيقية من عملاء اعتمدوا علينا في نقل منازلهم وشركاتهم وشحناتهم.</p>
+                    <span class="section-tag" data-i18n="testi_tag">آراء عملائنا</span>
+                    <h2 data-i18n="testi_title">كلام الناس أهم من كلامنا</h2>
+                    <p data-i18n="testi_sub">آراء حقيقية من عملاء اعتمدوا علينا في نقل منازلهم وشركاتهم وشحناتهم.</p>
                 </header>
 
                 <div class="testimonials-grid">
                     <article class="testimonial-card" data-aos="fade-up" data-aos-delay="50">
-                        <div class="stars" role="img" aria-label="تقييم 5 من 5 نجوم">
+                        <div class="stars" role="img" aria-label="تقييم 5 من 5 نجوم" data-i18n-aria="testi_stars">
                             <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
                         </div>
-                        <p>«خدمة ممتازة وفريق محترف جداً. نقلوا أثاث المنزل كامل بدون أي خدش، والفك والتركيب تم في نفس اليوم. أنصح بهم بشدة.»</p>
+                        <p data-i18n="testi_1_text">«خدمة ممتازة وفريق محترف جداً. نقلوا أثاث المنزل كامل بدون أي خدش، والفك والتركيب تم في نفس اليوم. أنصح بهم بشدة.»</p>
                         <footer>
                             <span class="t-avatar" aria-hidden="true">أ</span>
-                            <span><strong>أحمد محمود</strong><small>القاهرة — نقل منزلي</small></span>
+                            <span><strong data-i18n="testi_1_name">أحمد محمود</strong><small data-i18n="testi_1_role">القاهرة — نقل منزلي</small></span>
                         </footer>
                     </article>
 
                     <article class="testimonial-card" data-aos="fade-up" data-aos-delay="120">
-                        <div class="stars" role="img" aria-label="تقييم 5 من 5 نجوم">
+                        <div class="stars" role="img" aria-label="تقييم 5 من 5 نجوم" data-i18n-aria="testi_stars">
                             <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
                         </div>
-                        <p>«تعاملت معهم في شحن بضائع من الإسكندرية للخارج. دقة في المواعيد واحترافية عالية في الملفات والمستندات، والشحنة وصلت قبل الموعد.»</p>
+                        <p data-i18n="testi_2_text">«تعاملت معهم في شحن بضائع من الإسكندرية للخارج. دقة في المواعيد واحترافية عالية في الملفات والمستندات، والشحنة وصلت قبل الموعد.»</p>
                         <footer>
                             <span class="t-avatar" aria-hidden="true">م</span>
-                            <span><strong>محمد عبدالله</strong><small>الإسكندرية — شحن بحري</small></span>
+                            <span><strong data-i18n="testi_2_name">محمد عبدالله</strong><small data-i18n="testi_2_role">الإسكندرية — شحن بحري</small></span>
                         </footer>
                     </article>
 
                     <article class="testimonial-card" data-aos="fade-up" data-aos-delay="190">
-                        <div class="stars" role="img" aria-label="تقييم 5 من 5 نجوم">
+                        <div class="stars" role="img" aria-label="تقييم 5 من 5 نجوم" data-i18n-aria="testi_stars">
                             <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
                         </div>
-                        <p>«شركة عندها خبرة كبيرة في الشحن البحري. تعاملهم مع التوكيلات الملاحية وفر علينا وقت ومجهود كبير، والسعر كان في حدود المعقول.»</p>
+                        <p data-i18n="testi_3_text">«شركة عندها خبرة كبيرة في الشحن البحري. تعاملهم مع التوكيلات الملاحية وفر علينا وقت ومجهود كبير، والسعر كان في حدود المعقول.»</p>
                         <footer>
                             <span class="t-avatar" aria-hidden="true">س</span>
-                            <span><strong>سارة إبراهيم</strong><small>الجيزة — شحن دولي</small></span>
+                            <span><strong data-i18n="testi_3_name">سارة إبراهيم</strong><small data-i18n="testi_3_role">الجيزة — شحن دولي</small></span>
                         </footer>
                     </article>
 
                     <article class="testimonial-card" data-aos="fade-up" data-aos-delay="50">
-                        <div class="stars" role="img" aria-label="تقييم 5 من 5 نجوم">
+                        <div class="stars" role="img" aria-label="تقييم 5 من 5 نجوم" data-i18n-aria="testi_stars">
                             <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
                         </div>
-                        <p>«نقلنا مقر الشركة كله في ليلة واحدة بدون أي تعطيل لشغلنا. تنظيم ممتاز وتواصل مستمر مع مدير المشروع طول الوقت.»</p>
+                        <p data-i18n="testi_4_text">«نقلنا مقر الشركة كله في ليلة واحدة بدون أي تعطيل لشغلنا. تنظيم ممتاز وتواصل مستمر مع مدير المشروع طول الوقت.»</p>
                         <footer>
                             <span class="t-avatar" aria-hidden="true">ح</span>
-                            <span><strong>حسن علي</strong><small>المنصورة — نقل مكتبي</small></span>
+                            <span><strong data-i18n="testi_4_name">حسن علي</strong><small data-i18n="testi_4_role">المنصورة — نقل مكتبي</small></span>
                         </footer>
                     </article>
 
                     <article class="testimonial-card" data-aos="fade-up" data-aos-delay="120">
-                        <div class="stars" role="img" aria-label="تقييم 5 من 5 نجوم">
+                        <div class="stars" role="img" aria-label="تقييم 5 من 5 نجوم" data-i18n-aria="testi_stars">
                             <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
                         </div>
-                        <p>«اشتغلت معاهم في شحن جوي لبضاعة مستعجلة. التزام بالمواعيد والتعامل راقي جداً، وردوا عليّ في أي وقت على واتساب.»</p>
+                        <p data-i18n="testi_5_text">«اشتغلت معاهم في شحن جوي لبضاعة مستعجلة. التزام بالمواعيد والتعامل راقي جداً، وردوا عليّ في أي وقت على واتساب.»</p>
                         <footer>
                             <span class="t-avatar" aria-hidden="true">ن</span>
-                            <span><strong>نورهان سمير</strong><small>الأسكندرية — شحن جوي</small></span>
+                            <span><strong data-i18n="testi_5_name">نورهان سمير</strong><small data-i18n="testi_5_role">الأسكندرية — شحن جوي</small></span>
                         </footer>
                     </article>
 
                     <article class="testimonial-card" data-aos="fade-up" data-aos-delay="190">
-                        <div class="stars" role="img" aria-label="تقييم 5 من 5 نجوم">
+                        <div class="stars" role="img" aria-label="تقييم 5 من 5 نجوم" data-i18n-aria="testi_stars">
                             <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
                         </div>
-                        <p>«التغليف كان على أعلى مستوى، وكل حاجة اتحطت في علب مكتوب عليها محتواها. التخزين لمدة شهر كمان كان مريح وآمن.»</p>
+                        <p data-i18n="testi_6_text">«التغليف كان على أعلى مستوى، وكل حاجة اتحطت في علب مكتوب عليها محتواها. التخزين لمدة شهر كمان كان مريح وآمن.»</p>
                         <footer>
                             <span class="t-avatar" aria-hidden="true">ع</span>
-                            <span><strong>عمرو فتحي</strong><small>أسوان — تغليف وتخزين</small></span>
+                            <span><strong data-i18n="testi_6_name">عمرو فتحي</strong><small data-i18n="testi_6_role">أسوان — تغليف وتخزين</small></span>
                         </footer>
                     </article>
                 </div>
@@ -619,59 +622,59 @@
         <section id="pricing" class="section">
             <div class="container">
                 <header class="section-head" data-aos="fade-up">
-                    <span class="section-tag">باقاتنا</span>
-                    <h2>اختر الباقة المناسبة لك</h2>
-                    <p>أسعار نهائية تُحدد بعد المعاينة المجانية — والباقة تُعدّل حسب حجم الشحنة والمسافة.</p>
+                    <span class="section-tag" data-i18n="pricing_tag">باقاتنا</span>
+                    <h2 data-i18n="pricing_title">اختر الباقة المناسبة لك</h2>
+                    <p data-i18n="pricing_sub">أسعار نهائية تُحدد بعد المعاينة المجانية — والباقة تُعدّل حسب حجم الشحنة والمسافة.</p>
                 </header>
 
                 <div class="pricing-grid">
                     <article class="pricing-card" data-aos="fade-up" data-aos-delay="50">
                         <header>
-                            <h3>باقة أساسية</h3>
-                            <p class="price-sub">للانتقالات داخل المدينة</p>
+                            <h3 data-i18n="pricing_1_name">باقة أساسية</h3>
+                            <p class="price-sub" data-i18n="pricing_1_sub">للانتقالات داخل المدينة</p>
                         </header>
                         <ul class="price-features">
-                            <li><i class="fas fa-check" aria-hidden="true"></i> نقل داخل المدينة</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> تغليف أساسي</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> فك وتركيب</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> فريق عمل وشاحنة</li>
-                            <li class="muted"><i class="fas fa-xmark" aria-hidden="true"></i> بدون تأمين إضافي</li>
-                            <li class="muted"><i class="fas fa-xmark" aria-hidden="true"></i> بدون تخزين</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <span data-i18n="pricing_1_f1">نقل داخل المدينة</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <span data-i18n="pricing_1_f2">تغليف أساسي</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <span data-i18n="pricing_1_f3">فك وتركيب</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <span data-i18n="pricing_1_f4">فريق عمل وشاحنة</span></li>
+                            <li class="muted"><i class="fas fa-xmark" aria-hidden="true"></i> <span data-i18n="pricing_1_f5">بدون تأمين إضافي</span></li>
+                            <li class="muted"><i class="fas fa-xmark" aria-hidden="true"></i> <span data-i18n="pricing_1_f6">بدون تخزين</span></li>
                         </ul>
-                        <a href="#quote" class="btn btn-outline-navy btn-block">اطلب الآن</a>
+                        <a href="#quote" class="btn btn-outline-navy btn-block" data-i18n="pricing_cta">اطلب الآن</a>
                     </article>
 
                     <article class="pricing-card featured" data-aos="fade-up" data-aos-delay="150">
-                        <span class="badge">الأكثر طلباً</span>
+                        <span class="badge" data-i18n="pricing_badge">الأكثر طلباً</span>
                         <header>
-                            <h3>باقة متوسطة</h3>
-                            <p class="price-sub">للانتقالات بين المحافظات</p>
+                            <h3 data-i18n="pricing_2_name">باقة متوسطة</h3>
+                            <p class="price-sub" data-i18n="pricing_2_sub">للانتقالات بين المحافظات</p>
                         </header>
                         <ul class="price-features">
-                            <li><i class="fas fa-check" aria-hidden="true"></i> نقل داخل الجمهورية</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> تغليف احترافي كامل</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> فك وتركيب + تأمين</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> متابعة هاتفي أثناء النقل</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> أولوية في المواعيد</li>
-                            <li class="muted"><i class="fas fa-xmark" aria-hidden="true"></i> بدون تخزين طويل الأمد</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <span data-i18n="pricing_2_f1">نقل داخل الجمهورية</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <span data-i18n="pricing_2_f2">تغليف احترافي كامل</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <span data-i18n="pricing_2_f3">فك وتركيب + تأمين</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <span data-i18n="pricing_2_f4">متابعة هاتفي أثناء النقل</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <span data-i18n="pricing_2_f5">أولوية في المواعيد</span></li>
+                            <li class="muted"><i class="fas fa-xmark" aria-hidden="true"></i> <span data-i18n="pricing_2_f6">بدون تخزين طويل الأمد</span></li>
                         </ul>
-                        <a href="#quote" class="btn btn-gold btn-block">اطلب الآن</a>
+                        <a href="#quote" class="btn btn-gold btn-block" data-i18n="pricing_cta">اطلب الآن</a>
                     </article>
 
                     <article class="pricing-card" data-aos="fade-up" data-aos-delay="250">
                         <header>
-                            <h3>باقة VIP</h3>
-                            <p class="price-sub">للشحن الدولي والمنشآت الكبرى</p>
+                            <h3 data-i18n="pricing_3_name">باقة VIP</h3>
+                            <p class="price-sub" data-i18n="pricing_3_sub">للشحن الدولي والمنشآت الكبرى</p>
                         </header>
                         <ul class="price-features">
-                            <li><i class="fas fa-check" aria-hidden="true"></i> نقل دولي / شحن بحري وجوي</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> تغليف VIP للمقتنيات الحساسة</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> متابعة لحظية وتتبع الشحنة</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> تأمين شامل عالي القيمة</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> تخزين آمن حتى 30 يوماً</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> مدير حساب مخصص 24/7</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <span data-i18n="pricing_3_f1">نقل دولي / شحن بحري وجوي</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <span data-i18n="pricing_3_f2">تغليف VIP للمقتنيات الحساسة</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <span data-i18n="pricing_3_f3">متابعة لحظية وتتبع الشحنة</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <span data-i18n="pricing_3_f4">تأمين شامل عالي القيمة</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <span data-i18n="pricing_3_f5">تخزين آمن حتى 30 يوماً</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <span data-i18n="pricing_3_f6">مدير حساب مخصص 24/7</span></li>
                         </ul>
-                        <a href="#quote" class="btn btn-outline-navy btn-block">اطلب الآن</a>
+                        <a href="#quote" class="btn btn-outline-navy btn-block" data-i18n="pricing_cta">اطلب الآن</a>
                     </article>
                 </div>
             </div>
@@ -683,9 +686,9 @@
         <section id="contact" class="section section-alt">
             <div class="container">
                 <header class="section-head" data-aos="fade-up">
-                    <span class="section-tag">تواصل معنا</span>
-                    <h2>اطلب عرض سعر مجاني الآن</h2>
-                    <p>املأ البيانات وسنتواصل معك خلال ساعات العمل — أو اتصل بنا مباشرة في أي وقت.</p>
+                    <span class="section-tag" data-i18n="nav_contact">تواصل معنا</span>
+                    <h2 data-i18n="contact_title">اطلب عرض سعر مجاني الآن</h2>
+                    <p data-i18n="contact_sub">املأ البيانات وسنتواصل معك خلال ساعات العمل — أو اتصل بنا مباشرة في أي وقت.</p>
                 </header>
 
                 <div class="contact-grid">
@@ -696,56 +699,56 @@
                               action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
 
                             <div class="form-group">
-                                <label for="name">الاسم بالكامل <span class="req">*</span></label>
-                                <input type="text" id="name" name="name" placeholder="مثال: أحمد محمد علي"
+                                <label for="name"><span data-i18n="form_name_label">الاسم بالكامل</span> <span class="req">*</span></label>
+                                <input type="text" id="name" name="name" placeholder="مثال: أحمد محمد علي" data-i18n-ph="form_name_ph"
                                        autocomplete="name" aria-describedby="name-error">
                                 <small class="field-error" id="name-error" role="alert"></small>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="phone">رقم الهاتف <span class="req">*</span></label>
+                                    <label for="phone"><span data-i18n="form_phone_label">رقم الهاتف</span> <span class="req">*</span></label>
                                     <input type="tel" id="phone" name="phone" placeholder="01xxxxxxxxx"
                                            inputmode="numeric" autocomplete="tel" aria-describedby="phone-error">
                                     <small class="field-error" id="phone-error" role="alert"></small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="city">المدينة / المنطقة</label>
-                                    <input type="text" id="city" name="city" placeholder="مثال: القاهرة — مدينة نصر"
+                                    <label for="city"><span data-i18n="form_city_label">المدينة / المنطقة</span></label>
+                                    <input type="text" id="city" name="city" placeholder="مثال: القاهرة — مدينة نصر" data-i18n-ph="form_city_ph"
                                            autocomplete="address-level2">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="service">نوع الخدمة <span class="req">*</span></label>
+                                <label for="service"><span data-i18n="form_service_label">نوع الخدمة</span> <span class="req">*</span></label>
                                 <select id="service" name="service" aria-describedby="service-error">
-                                    <option value="">— اختر نوع الخدمة —</option>
-                                    <option value="نقل منزلي">نقل منزلي</option>
-                                    <option value="نقل مكتبي">نقل مكتبي</option>
-                                    <option value="شحن بحري">شحن بحري</option>
-                                    <option value="شحن جوي">شحن جوي</option>
-                                    <option value="فك وتركيب">فك وتركيب</option>
-                                    <option value="تغليف">تغليف</option>
-                                    <option value="تخزين">تخزين</option>
-                                    <option value="أخرى">أخرى</option>
+                                    <option value="" data-i18n="form_service_default">— اختر نوع الخدمة —</option>
+                                    <option value="نقل منزلي" data-i18n="form_svc_home">نقل منزلي</option>
+                                    <option value="نقل مكتبي" data-i18n="form_svc_office">نقل مكتبي</option>
+                                    <option value="شحن بحري" data-i18n="form_svc_sea">شحن بحري</option>
+                                    <option value="شحن جوي" data-i18n="form_svc_air">شحن جوي</option>
+                                    <option value="فك وتركيب" data-i18n="pricing_1_f3">فك وتركيب</option>
+                                    <option value="تغليف" data-i18n="form_svc_packing">تغليف</option>
+                                    <option value="تخزين" data-i18n="form_svc_storage">تخزين</option>
+                                    <option value="أخرى" data-i18n="form_svc_other">أخرى</option>
                                 </select>
                                 <small class="field-error" id="service-error" role="alert"></small>
                             </div>
 
                             <div class="form-group">
-                                <label for="details">تفاصيل إضافية</label>
-                                <textarea id="details" name="details" rows="4"
+                                <label for="details"><span data-i18n="form_details_label">تفاصيل إضافية</span></label>
+                                <textarea id="details" name="details" rows="4" data-i18n-ph="form_details_ph"
                                           placeholder="اكتب تفاصيل الشحنة، المسافة، الموعد المفضل، أو أي متطلبات خاصة..."></textarea>
                             </div>
 
                             <button type="submit" class="btn btn-gold btn-block btn-lg">
-                                <span class="btn-label">أرسل الطلب</span>
+                                <span class="btn-label" data-i18n="form_submit">أرسل الطلب</span>
                                 <span class="btn-spinner" hidden><i class="fas fa-spinner fa-spin" aria-hidden="true"></i></span>
                             </button>
 
                             <p class="form-note">
                                 <i class="fas fa-lock" aria-hidden="true"></i>
-                                بياناتك آمنة لدىنا ولن تُستخدم إلا للتواصل بخصوص طلبك.
+                                <span data-i18n="form_note">بياناتك آمنة لدىنا ولن تُستخدم إلا للتواصل بخصوص طلبك.</span>
                             </p>
                             <p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
                         </form>
@@ -753,42 +756,42 @@
 
                     <!-- Contact info (appears on the left in RTL) -->
                     <aside class="contact-info" data-aos="fade-up" data-aos-delay="120">
-                        <h3>بيانات التواصل</h3>
+                        <h3 data-i18n="contact_info_title">بيانات التواصل</h3>
 
                         <ul class="info-list">
                             <li>
                                 <span class="info-icon"><i class="fas fa-phone" aria-hidden="true"></i></span>
                                 <div>
-                                    <h4>اتصل بنا</h4>
+                                    <h4 data-i18n="contact_call_title">اتصل بنا</h4>
                                     <p><a href="tel:+201097304445" dir="ltr">+201097304445</a></p>
                                 </div>
                             </li>
                             <li>
                                 <span class="info-icon info-icon-wa"><i class="fab fa-whatsapp" aria-hidden="true"></i></span>
                                 <div>
-                                    <h4>واتساب</h4>
-                                    <p><a href="https://wa.me/201097304445" target="_blank" rel="noopener">اضغط لبدء المحادثة الآن</a></p>
+                                    <h4 data-i18n="hero_cta_wa">واتساب</h4>
+                                    <p><a href="https://wa.me/201097304445" target="_blank" rel="noopener" data-i18n="contact_wa_cta">اضغط لبدء المحادثة الآن</a></p>
                                 </div>
                             </li>
                             <li>
                                 <span class="info-icon"><i class="fas fa-envelope" aria-hidden="true"></i></span>
                                 <div>
-                                    <h4>البريد الإلكتروني</h4>
-                                    <p>elbadry.trans@gmail.com — بريد الشركة</p>
+                                    <h4 data-i18n="contact_email_title">البريد الإلكتروني</h4>
+                                    <p>elbadry.trans@gmail.com <span data-i18n="contact_email_desc">— بريد الشركة</span></p>
                                 </div>
                             </li>
                             <li>
                                 <span class="info-icon"><i class="fas fa-location-dot" aria-hidden="true"></i></span>
                                 <div>
-                                    <h4>العنوان</h4>
-                                    <p>شارع مرور العجمى طريق ام زغيو امام بوابه عز الدخيله — الاسكندرية، مصر</p>
+                                    <h4 data-i18n="contact_addr_title">العنوان</h4>
+                                    <p data-i18n="contact_addr">شارع مرور العجمى طريق ام زغيو امام بوابه عز الدخيله — الاسكندرية، مصر</p>
                                 </div>
                             </li>
                             <li>
                                 <span class="info-icon"><i class="fas fa-clock" aria-hidden="true"></i></span>
                                 <div>
-                                    <h4>مواعيد العمل</h4>
-                                    <p>على مدار الساعة<br><strong>خدمة طوارئ 24/24</strong></p>
+                                    <h4 data-i18n="contact_hours_title">مواعيد العمل</h4>
+                                    <p><span data-i18n="contact_hours_1">على مدار الساعة</span><br><strong data-i18n="contact_hours_2">خدمة طوارئ 24/24</strong></p>
                                 </div>
                             </li>
                         </ul>
@@ -798,6 +801,10 @@
                                 title="خريطة موقع شركة البدري لنقل — الاسكندرية، مصر"
                                 src="https://maps.google.com/maps?q=Alexandria%2C%20Egypt&t=&z=11&ie=UTF8&iwloc=&output=embed"
                                 loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                            <div class="map-fallback" hidden>
+                                <img src="./images/route-map-fallback.svg" alt="خريطة موقع شركة البدري — العجمي، الإسكندرية" loading="lazy">
+                                <a class="btn btn-gold" href="https://maps.google.com/?q=Alexandria%2C+Egypt" target="_blank" rel="noopener" data-i18n="map_link">عرض الخريطة التفاعلية</a>
+                            </div>
                         </div>
                     </aside>
                 </div>
@@ -816,11 +823,11 @@
                 <a href="#home" class="logo logo-footer">
                     <span class="logo-mark" aria-hidden="true"><i class="fas fa-shipping-fast"></i></span>
                     <span class="logo-text">
-                        <strong>شركة البدري لنقل</strong>
+                        <strong data-i18n="brand_name">شركة البدري لنقل</strong>
                         <small dir="ltr">El Badry Transport Company</small>
                     </span>
                 </a>
-                <p>
+                <p data-i18n="footer_about">
                     خبرة أكثر من 15 عاماً في النقل والشحن المحلي والدولي. نقل أثاث وشركات، شحن بحري وجوي，
                     وتغليف وتخزين — ونتعامل مع أكبر التوكيلات الملاحية والوكلاء حول العالم.
                 </p>
@@ -829,51 +836,51 @@
                 </a>
             </div>
 
-            <nav class="footer-links" aria-label="روابط سريعة">
-                <h4>روابط سريعة</h4>
+            <nav class="footer-links" aria-label="روابط سريعة" data-i18n-aria="footer_quick_title">
+                <h4 data-i18n="footer_quick_title">روابط سريعة</h4>
                 <ul>
-                    <li><a href="#home">الرئيسية</a></li>
-                    <li><a href="#services">خدماتنا</a></li>
-                    <li><a href="#why-us">لماذا نحن</a></li>
-                    <li><a href="#how-it-works">كيف نعمل</a></li>
-                    <li><a href="#testimonials">آراء العملاء</a></li>
-                    <li><a href="#contact">تواصل معنا</a></li>
+                    <li><a href="#home" data-i18n="nav_home">الرئيسية</a></li>
+                    <li><a href="#services" data-i18n="nav_services">خدماتنا</a></li>
+                    <li><a href="#why-us" data-i18n="nav_why">لماذا نحن</a></li>
+                    <li><a href="#how-it-works" data-i18n="nav_how">كيف نعمل</a></li>
+                    <li><a href="#testimonials" data-i18n="nav_reviews">آراء العملاء</a></li>
+                    <li><a href="#contact" data-i18n="nav_contact">تواصل معنا</a></li>
                 </ul>
             </nav>
 
             <div class="footer-services">
-                <h4>خدماتنا</h4>
+                <h4 data-i18n="nav_services">خدماتنا</h4>
                 <ul>
-                    <li><a href="#services">نقل الأثاث المنزلي</a></li>
-                    <li><a href="#services">نقل المكاتب والشركات</a></li>
-                    <li><a href="#services">الشحن البحري</a></li>
-                    <li><a href="#services">الشحن الجوي</a></li>
-                    <li><a href="#services">التغليف والتخزين</a></li>
+                    <li><a href="#services" data-i18n="svc_home_title">نقل الأثاث المنزلي</a></li>
+                    <li><a href="#services" data-i18n="svc_office_title">نقل المكاتب والشركات</a></li>
+                    <li><a href="#services" data-i18n="svc_sea_title">الشحن البحري</a></li>
+                    <li><a href="#services" data-i18n="svc_air_title">الشحن الجوي</a></li>
+                    <li><a href="#services" data-i18n="footer_svc_5">التغليف والتخزين</a></li>
                 </ul>
             </div>
 
             <div class="footer-contact">
-                <h4>تواصل معنا</h4>
+                <h4 data-i18n="nav_contact">تواصل معنا</h4>
                 <ul>
                     <li><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+201097304445" dir="ltr">+201097304445</a></li>
-                    <li><i class="fab fa-whatsapp" aria-hidden="true"></i> <a href="https://wa.me/201097304445" target="_blank" rel="noopener">واتساب مباشر</a></li>
-                    <li><i class="fas fa-envelope" aria-hidden="true"></i> elbadry.trans@gmail.com — البريد</li>
-                    <li><i class="fas fa-location-dot" aria-hidden="true"></i> شارع مرور العجمى طريق ام زغيو امام بوابه عز الدخيله — الاسكندرية، مصر</li>
-                    <li><i class="fas fa-clock" aria-hidden="true"></i> على مدار الساعة 24/24</li>
+                    <li><i class="fab fa-whatsapp" aria-hidden="true"></i> <a href="https://wa.me/201097304445" target="_blank" rel="noopener" data-i18n="footer_wa">واتساب مباشر</a></li>
+                    <li><i class="fas fa-envelope" aria-hidden="true"></i> elbadry.trans@gmail.com <span data-i18n="footer_email">— البريد</span></li>
+                    <li><i class="fas fa-location-dot" aria-hidden="true"></i> <span data-i18n="contact_addr">شارع مرور العجمى طريق ام زغيو امام بوابه عز الدخيله — الاسكندرية، مصر</span></li>
+                    <li><i class="fas fa-clock" aria-hidden="true"></i> <span data-i18n="footer_hours">على مدار الساعة 24/24</span></li>
                 </ul>
 
                 <div class="social-icons">
-                    <a href="#" data-todo="create-page" title="قريباً" aria-label="صفحة فيسبوك (قريباً)"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-                    <a href="#" data-todo="create-page" title="قريباً" aria-label="صفحة إنستغرام (قريباً)"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                    <a href="#" data-todo="create-page" title="قريباً" aria-label="حساب تيك توك (قريباً)"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
-                    <a href="https://wa.me/201097304445" target="_blank" rel="noopener" title="واتساب" aria-label="تواصل عبر واتساب"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                    <a href="#" data-todo="create-page" title="قريباً" aria-label="صفحة فيسبوك (قريباً)" data-i18n-aria="footer_fb"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="#" data-todo="create-page" title="قريباً" aria-label="صفحة إنستغرام (قريباً)" data-i18n-aria="footer_ig"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#" data-todo="create-page" title="قريباً" aria-label="حساب تيك توك (قريباً)" data-i18n-aria="footer_tt"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+                    <a href="https://wa.me/201097304445" target="_blank" rel="noopener" title="واتساب" aria-label="تواصل عبر واتساب" data-i18n-aria="wa_tip"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
 
         <div class="footer-bottom">
             <div class="container footer-bottom-inner">
-                <p>© 2025 شركة البدري لنقل — جميع الحقوق محفوظة</p>
+                <p>© <span data-year>2015 - 2026</span> <span data-i18n="footer_rights_body">شركة البدري لنقل — جميع الحقوق محفوظة</span></p>
                 <p dir="ltr" class="footer-domain">ElBadryTransport.com</p>
             </div>
         </div>
@@ -882,7 +889,8 @@
     <!-- ============================================================
          Scripts
     ============================================================ -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-    <script src="script.js" defer></script>
+    <script src="./js/aos.js" defer></script>
+    <script src="./js/lang.js"></script>
+    <script src="./js/script.js" defer></script>
 </body>
 </html>

@@ -295,6 +295,19 @@ h3{ font-size:clamp(1.05rem,2.2vw,1.25rem); }
 
 .header-cta .btn{ box-shadow:0 8px 20px rgba(245,166,35,.28); }
 
+/* --- Language toggle --- */
+.lang-toggle{
+    display:inline-flex; align-items:center; gap:6px;
+    border:1px solid rgba(255,255,255,.25); border-radius:8px;
+    background:rgba(255,255,255,.08); color:#fff;
+    padding:8px 14px; cursor:pointer; font-weight:700; font-size:14px;
+    font-family:inherit; transition:background .25s;
+}
+.lang-toggle:hover{ background:rgba(255,255,255,.18); }
+
+/* English mode: Latin-first typography (Cairo already covers Arabic) */
+html[lang="en"] body{ font-family:'Poppins','Cairo',sans-serif; }
+
 /* --- Hamburger (hidden on desktop) --- */
 .menu-toggle{
     display:none;
@@ -1106,6 +1119,11 @@ h3{ font-size:clamp(1.05rem,2.2vw,1.25rem); }
     height:230px;
 }
 .map-wrap iframe{ width:100%; height:100%; border:0; }
+.map-wrap iframe[hidden]{ display:none; }
+.map-fallback{ height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; background:var(--navy-900); padding:16px; text-align:center; }
+.map-fallback[hidden]{ display:none; }
+.map-fallback img{ max-height:150px; width:auto; max-width:100%; border-radius:8px; }
+.map-fallback p{ color:rgba(255,255,255,.75); font-size:.9rem; margin:0; }
 
 /* ============================================================================
    16. FOOTER

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="خريطة موقع شركة البدري — العجمي، الإسكندرية">
+  <rect width="800" height="450" fill="#0B1F3A"/>
+  <g stroke="#ffffff" stroke-width="1" opacity="0.06">
+    <path d="M0 90H800M0 180H800M0 270H800M0 360H800M100 0V450M200 0V450M300 0V450M400 0V450M500 0V450M600 0V450M700 0V450"/>
+  </g>
+  <path d="M0 0H800V110C650 130 550 100 420 120C300 138 180 110 0 140Z" fill="#14406b" opacity="0.85"/>
+  <text x="400" y="55" text-anchor="middle" font-family="Cairo, Arial, sans-serif" font-size="22" fill="#9fc3e8" opacity="0.9">البحر المتوسط</text>
+  <path d="M120 380 C 240 340, 300 300, 380 260 S 520 200, 560 170" fill="none" stroke="#F5A623" stroke-width="4" stroke-dasharray="12 8" stroke-linecap="round"/>
+  <circle cx="120" cy="380" r="7" fill="#F5A623"/>
+  <circle cx="560" cy="170" r="10" fill="#F5A623"/>
+  <circle cx="560" cy="170" r="18" fill="none" stroke="#F5A623" stroke-width="2" opacity="0.6"/>
+  <g font-family="Cairo, Arial, sans-serif" text-anchor="middle">
+    <text x="560" y="215" font-size="24" font-weight="bold" fill="#ffffff">العجمي — الإسكندرية</text>
+    <text x="560" y="240" font-size="15" fill="#9fc3e8">مقر شركة البدري لنقل</text>
+    <text x="120" y="410" font-size="15" fill="#9fc3e8">القاهرة</text>
+  </g>
+</svg>
