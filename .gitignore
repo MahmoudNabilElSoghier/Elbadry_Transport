@@ -13,3 +13,27 @@ desktop.ini
 # Logs & temp
 *.log
 *.tmp
+
+# --- Secret / credential guards (added after the Elbadry_Transport.txt incident) ---
+*.txt
+!README.txt
+!robots.txt
+Elbadry_Transport.txt
+*password*
+*credential*
+*secret*
+*.key
+*.pem
+*.env
+.env.*
+secrets.json
+config.local.*
+*.pdf
+*.docx
+*.xlsx
+
+# Explicit allow-list (do not let the rules above block these)
+!README.md
+!sitemap.xml
+!robots.txt
+!LICENSE
