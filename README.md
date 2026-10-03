@@ -62,8 +62,12 @@ Rules:
 
 Validates inline, then POSTs to the form's `action`. While `action`
 contains `YOUR_FORM_ID`, submissions open WhatsApp with the quote
-prefilled instead of failing silently — paste a real Formspree/Web3Forms
-URL to go live (no code change needed).
+prefilled instead of failing silently. To go live with email delivery,
+paste a real Formspree ID (`https://formspree.io/f/<id>`) into the
+form's `action` in `index.html` — the real-POST path, bilingual
+success/error toasts, and spinner states activate automatically with
+no code change. (Status: WhatsApp mode — no ID configured yet. The ID
+is intentionally kept out of this README and git history.)
 
 ## Map
 
