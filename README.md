@@ -60,14 +60,20 @@ Rules:
 
 ## Contact form
 
-Validates inline, then POSTs to the form's `action`. While `action`
-contains `YOUR_FORM_ID`, submissions open WhatsApp with the quote
-prefilled instead of failing silently. To go live with email delivery,
-paste a real Formspree ID (`https://formspree.io/f/<id>`) into the
-form's `action` in `index.html` — the real-POST path, bilingual
-success/error toasts, and spinner states activate automatically with
-no code change. (Status: WhatsApp mode — no ID configured yet. The ID
-is intentionally kept out of this README and git history.)
+Status: **live** — the form POSTs to Formspree and submissions land in
+the Formspree dashboard. It validates inline (Egyptian mobile format,
+required service), shows a bilingual success/error message, clears the
+fields on success, and reveals a prefilled WhatsApp fallback button if
+the POST fails (rate limit, network) so no lead is lost. A `_gotcha`
+honeypot field blocks spam bots without a captcha.
+
+- The form ID lives in the form's `action` attribute in `index.html`
+  (`https://formspree.io/f/<id>`) and is intentionally kept out of this
+  README.
+- To change the destination email, log into the Formspree dashboard
+  (form settings → notification email).
+- If `action` ever reverts to `YOUR_FORM_ID`, submissions open WhatsApp
+  with the quote prefilled instead of failing silently.
 
 ## Map
 
@@ -78,6 +84,12 @@ when unreachable (probed on load and on online/offline flips).
 
 Static hosting only (GitHub Pages, Netlify, any web server). Set the
 canonical/OG URLs in `index.html` to the real domain before launch.
+
+Local CSS/JS references in `index.html` carry a cache-busting version
+string (`?v=YYYYMMDD`, e.g. `css/style.css?v=20261004`). **Bump this
+string on every release that edits CSS or JS**, otherwise visitors may
+keep seeing the cached copy. Vendored files under `assets/vendor/`
+already carry stable versions — leave them alone.
 
 ## License
 
