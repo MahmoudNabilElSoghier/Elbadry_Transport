@@ -644,7 +644,11 @@
                     <!-- Form (appears on the right in RTL) -->
                     <div id="quote" class="contact-form-wrap" data-aos="fade-up">
                         <form class="contact-form" id="contact-form" novalidate
-                              action="https://formspree.io/f/xnpneeyk" method="POST">
+                              action="https://formspree.io/f/xnpneeyk" method="POST"
+                              accept-charset="UTF-8">
+                            <input type="hidden" name="_subject" value="طلب عرض سعر جديد من الموقع">
+                            <input type="hidden" name="_language" value="ar">
+                            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
 
                             <div class="form-group">
                                 <label for="name"><span data-i18n="form_name_label">الاسم بالكامل</span> <span class="req">*</span></label>
@@ -698,6 +702,10 @@
                                 <span data-i18n="form_note">بياناتك آمنة لدىنا ولن تُستخدم إلا للتواصل بخصوص طلبك.</span>
                             </p>
                             <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+                            <a id="form-wa-fallback" class="btn btn-outline-navy btn-block" href="https://wa.me/201097304445" target="_blank" rel="noopener" hidden>
+                                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                                <span data-i18n="form_wa_fallback">تعذّر الإرسال — أرسل طلبك عبر واتساب</span>
+                            </a>
                         </form>
                     </div>
 

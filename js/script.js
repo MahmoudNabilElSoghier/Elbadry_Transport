@@ -306,6 +306,8 @@
        ===================================================================== */
     var form        = $('#contact-form');
     var formMessage = $('#form-message');
+    var waFallback  = $('#form-wa-fallback');
+    var WA_NUMBER   = '201097304445';
 
     /* Egyptian mobile numbers: 010 / 011 / 012 / 015 + 8 digits */
     var PHONE_REGEX = /^01[0125]\d{8}$/;
@@ -400,9 +402,33 @@
             var action = form.getAttribute('action') || '';
             var isPlaceholder = action.indexOf('YOUR_FORM_ID') !== -1 || action.indexOf('YOUR_ACCESS_TOKEN') !== -1;
 
+            /* Prefilled WhatsApp quote — shared by placeholder mode and the
+               error fallback so a lead is never lost. */
+            function buildWaUrl() {
+                var svc = document.getElementById('service');
+                var svcOpt = svc ? svc.options[svc.selectedIndex] : null;
+                var svcKey = svcOpt ? svcOpt.getAttribute('data-i18n') : null;
+                var svcName = svcKey ? t(svcKey) : (svc ? svc.value : '');
+                var lines = [
+                    t('js_wa_title'),
+                    '———————————',
+                    t('js_wa_name') + document.getElementById('name').value.trim(),
+                    t('js_wa_phone') + document.getElementById('phone').value.trim(),
+                    t('js_wa_city') + (document.getElementById('city').value.trim() || '—'),
+                    t('js_wa_service') + svcName,
+                    t('js_wa_details') + (document.getElementById('details').value.trim() || '—')
+                ];
+                return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
+            }
+
+            function hideWaFallback() {
+                if (waFallback) waFallback.hidden = true;
+            }
+
             function success(msg) {
                 formMessage.textContent = msg;
                 formMessage.className = 'form-message success';
+                hideWaFallback();
                 form.reset();
                 ['name', 'phone', 'service'].forEach(function (id) {
                     var f = document.getElementById(id);
@@ -413,6 +439,10 @@
             function fail(msg) {
                 formMessage.textContent = msg;
                 formMessage.className = 'form-message error';
+                if (waFallback) {
+                    waFallback.href = buildWaUrl();
+                    waFallback.hidden = false;
+                }
             }
 
             function resetBtn() {
@@ -427,28 +457,19 @@
                the site's wa.me links). Paste a Formspree / Web3Forms URL into
                the form's `action` and the real POST below takes over.     */
             if (isPlaceholder) {
-                var waNumber = '201097304445';
-                var svcOpt = service.options[service.selectedIndex];
-                var svcKey = svcOpt ? svcOpt.getAttribute('data-i18n') : null;
-                var svcName = svcKey ? t(svcKey) : service.value;
-                var lines = [
-                    t('js_wa_title'),
-                    '———————————',
-                    t('js_wa_name') + name.value.trim(),
-                    t('js_wa_phone') + phone.value.trim(),
-                    t('js_wa_city') + (document.getElementById('city').value.trim() || '—'),
-                    t('js_wa_service') + svcName,
-                    t('js_wa_details') + (document.getElementById('details').value.trim() || '—')
-                ];
-                window.open(
-                    'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(lines.join('\n')),
-                    '_blank', 'noopener'
-                );
+                window.open(buildWaUrl(), '_blank', 'noopener');
                 formMessage.textContent = t('js_wa_ready');
                 formMessage.className = 'form-message success';
                 resetBtn();
                 return;
             }
+
+            /* Tell Formspree which language the email notification should use */
+            var langField = form.querySelector('[name="_language"]');
+            if (langField) {
+                langField.value = (document.documentElement.lang || 'ar').slice(0, 2);
+            }
+            hideWaFallback();
 
             /* --- REAL SUBMISSION (Formspree / Web3Forms compatible) ------- */
             fetch(form.action, {
